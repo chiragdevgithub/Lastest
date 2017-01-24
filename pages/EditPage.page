@@ -1,0 +1,5 @@
+<apex:page standardController="Campaign">
+
+	   <apex:detail subject="{!campaign.Id}"  relatedList="true" title="false" />
+
+	</apex:page>

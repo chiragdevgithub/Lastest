@@ -1,0 +1,41 @@
+<apex:page standardController="Campaign" extensions="DetailPageContoller">
+<apex:form >
+<apex:pageBlock title="Campaign Details"  >
+<apex:pageBlockButtons location="top" rendered="{!if(flag=true,true,false)}" >
+<apex:commandButton action="{!onedit}"  id="editButton" value="Edit"/>
+<apex:commandButton onclick="return confirm('Are you sure?')" action="{!delete}" id="deleteButton" value="Delete"/>
+</apex:pageBlockButtons>
+<apex:pageBlockButtons location="top" rendered="{!if(flag=false,true,false)}" >
+<apex:commandButton action="{!Save}"  id="saveButton" value="Save"/>
+<apex:commandButton action="{!Cancel}"  id="cancelButton" value="Cancel"/>
+</apex:pageBlockButtons>
+
+<apex:panelGroup  rendered="{!if(flag=true,true,false)}" >
+<apex:pageBlockSection title="Campaign Detail" columns="2" rendered="true"  id="View">
+<apex:outputField value="{!Campaign.name}"/>
+<apex:outputField value="{!Campaign.StartDate}"/>
+<apex:outputField value="{!Campaign.EndDate}"/>
+<apex:outputField value="{!Campaign.CreatedById}"/>
+<apex:outputField value="{!Campaign.LastModifiedById}"/>
+<apex:outputField value="{!Campaign.Type}"/>
+<apex:outputField value="{!Campaign.NumberSent}"/>
+<apex:outputField value="{!Campaign.ParentId}"/>
+<apex:outputField value="{!Campaign.Status}"/>
+</apex:pageBlockSection>
+</apex:panelGroup>
+<apex:panelGroup rendered="{!if(flag=false,true,false)}">
+<apex:pageBlockSection title="Campaign Edit" columns="2" rendered="true"  id="EditView">
+<apex:inputField value="{!Campaign.name}"/>
+<apex:inputField value="{!Campaign.StartDate}"/>
+<apex:inputField value="{!Campaign.EndDate}"/>
+<apex:outputField value="{!Campaign.CreatedById}"/>
+<apex:outputField value="{!Campaign.LastModifiedById}"/>
+<apex:inputField value="{!Campaign.Type}"/>
+<apex:inputField value="{!Campaign.NumberSent}"/>
+<apex:inputField value="{!Campaign.ParentId}"/>
+<apex:inputField value="{!Campaign.Status}"/>
+</apex:pageBlockSection>
+</apex:panelGroup>   
+</apex:pageBlock>
+</apex:form>
+</apex:page>

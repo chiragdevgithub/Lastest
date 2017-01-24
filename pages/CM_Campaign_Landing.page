@@ -1,0 +1,27 @@
+<apex:page controller="ListController">
+<apex:form >
+<apex:pageBlock >
+<apex:selectList multiselect="false" value="{!selectedView}" size="1"  id="views">View : &nbsp; &nbsp;
+<apex:selectOptions value="{!items}"  />
+<apex:actionSupport event="onchange" action="{!assignAction}" reRender="campaignTable"/>
+</apex:selectList>
+<br>
+</br>
+<apex:pageBlockTable value="{!campaigns}" var="camp" id="campaignTable">
+<apex:column headerValue="Name" ><apex:outputLink value="/apex/Campaign_detail_page?id={!camp.id}">{!camp.Name}</apex:outputLink></apex:column>
+<apex:column value="{!camp.Status}" />
+<apex:column value="{!camp.Type}" />
+<apex:column value="{!camp.StartDate}" />
+</apex:pageBlockTable>
+<br></br>
+<div style="text-align:center">
+<apex:commandButton action="{!first}" reRender="campaignTable" value="First"> </apex:commandButton>
+<apex:commandButton action="{!previous}" rendered="{!hasPrevious}" reRender="campaignTable" value="Previous"></apex:commandButton>
+<apex:commandButton action="{!next}" rendered="{!hasNext}" reRender="campaignTable" value="Next"></apex:commandButton>
+<apex:commandButton action="{!last}" reRender="campaignTable" value="Last"></apex:commandButton>
+</div>
+</apex:pageBlock>
+</apex:form>
+<script>
+</script>
+</apex:page>

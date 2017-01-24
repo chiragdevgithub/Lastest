@@ -1,0 +1,29 @@
+<apex:page standardController="Campaign" extensions="ListController" action="{!onLoad}" >
+
+<apex:form >
+
+<apex:pageBlock >
+<apex:selectList multiselect="false" value="{!selectedView}" size="1" id="views" >View:
+<apex:selectOptions value="{!items}"  />
+
+
+</apex:selectList>
+
+<apex:commandButton action="{!assignAction}" value="go"/>
+
+<apex:pageBlockTable value="{!recentlyModified}" var="camp" >
+
+
+<apex:column headerValue="Name" ><apex:outputLink value="/apex/Campaign_detail_page?id={!camp.id}">{!camp.Name}</apex:outputLink></apex:column>
+<apex:column value="{!camp.Status}" />
+<apex:column value="{!camp.Type}" />
+<apex:column value="{!camp.StartDate}" />
+
+</apex:pageBlockTable>
+<apex:commandButton value="first"/>
+<apex:commandButton value="next"/>
+<apex:commandButton value="previous"/>
+<apex:commandButton value="last"/>
+</apex:pageBlock>
+</apex:form>
+</apex:page>
